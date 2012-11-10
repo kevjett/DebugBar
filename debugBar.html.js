@@ -9,7 +9,7 @@
 
 	$(function() {
 		
-		bar = $('<div id="debugBar" class="dbar-toolbar"></div>');
+		bar = $('<div class="dbar-toolbar"></div>');
 		$(document.body).append(bar);
 		var imgURL = chrome.extension.getURL("bg.png");
 		bar.css('background-image', 'url(' + imgURL + ')');
@@ -36,7 +36,7 @@
 
 	function getModHtml(name) {
 		var mod = debugBar(name);
-		return '<div id="bdar' + name + '" class="dbar-mod"><span class="dbar-value">' + mod.getData() + '</span><span class="dbar-label">' + mod.getName() + '</span></div>';
+		return '<div id="bdar' + name + '" class="dbar-mod"><div class="dbar-label"><span class="dbar-value">' + mod.getData() + '</span> <span class="dbar-name">' + mod.getName() + '</span></div></div>';
 	}
 
 }(window.debugBar, window.jQuery));
