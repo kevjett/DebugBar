@@ -17,7 +17,7 @@ body {
 	background-color: #333;
 	background-repeat: repeat-x;
 	color:#eee;
-	font-size: 10pt;
+	font-size: 11pt;
 }
 
 .dbar-mod {
@@ -29,13 +29,66 @@ body {
 
 .dbar-label {
 	line-height: 40px;
+	font-size:14pt;
 }
 
 .dbar-value {
-	font-size: 14pt;
+	
 }
 
 .dbar-name {
 	color: #888;
 	font-weight: 500;
+	font-size: 11pt;
+	vertical-align: bottom;
+}
+
+.dbar-menu-wrap {
+	position: absolute;
+	width: 100%;
+	box-sizing: border-box;
+	left: 0;
+	margin: 0.1em 0 0;
+	padding: 0 4px;
+	display:none;
+}
+.dbar-menu {
+	padding: 1em;
+	margin: 0;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#444), to(#222));
+	background: linear-gradient(#f9d835, #f3961c);
+	border-radius: 10px;
+	box-shadow: 2px 4px 6px rgba(0,0,0,0.4);
+	color:#eee;
+	text-shadow: 0 1px 0 #000;
+}
+
+.dbar-menu-wrap ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	color:#eee;
+	text-shadow: 0 1px 0 #000;
+}
+
+.dbar-menu-wrap::after {
+	content: "";
+	position: absolute;
+	border-style: solid;
+	display: block;
+	width: 0;
+
+	top: -0.8em;
+	left: 10%;
+	border-width: 0 1em 1em;
+	border-color: #444 transparent;
+}
+
+.dbar-mod:hover .dbar-menu-wrap {
+	display:block;
+}
+
+.dbar-item {
+	padding: 0;
+	margin: 0;
 }
