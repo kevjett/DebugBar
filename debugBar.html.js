@@ -11,6 +11,8 @@
 		
 		bar = $('<div id="debugBar" class="dbar-toolbar"></div>');
 		$(document.body).append(bar);
+		var imgURL = chrome.extension.getURL("bg.png");
+		bar.css('background-image', 'url(' + imgURL + ')');
 
 		debugBar.update.addListener(onModUpdate);
 		//	load modules
