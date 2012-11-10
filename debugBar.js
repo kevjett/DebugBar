@@ -2,13 +2,19 @@
 /*global jQuery:false */
 (function(document, $) {
 	'use strict';
+	var debugBar;
+
+	debugger;
 
 	//	quiet stop
-	if (!$ || document.debugBar) return;
+	if (!$ || $('#debugBar').length) return;
+	
+	$(function() {
 
-	//...
-	document.body.style.backgroundColor='red';
+		debugBar = $('<div id="debugBar"></div>');
+		$(document.body).append(debugBar);
 
+	});
 
 
 }(document, window.jQuery));
