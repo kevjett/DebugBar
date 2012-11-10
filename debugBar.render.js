@@ -27,7 +27,7 @@
 				return String(totalTime) + "ms";
 			},
 			getList : function() {
-				return loadList;
+				return list;
 			}
 		};
 	});
