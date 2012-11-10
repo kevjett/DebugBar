@@ -1,3 +1,4 @@
 chrome.browserAction.onClicked.addListener(function(tab) {
-	chrome.tabs.executeScript(tab.id, {code:"document.body.style.backgroundColor='red'"});
+	chrome.tabs.insertCSS(tab.id, {file: "style.css"});
+	chrome.tabs.executeScript(tab.id, {file: "debugBar.js"});
 });
