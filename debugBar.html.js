@@ -1,5 +1,5 @@
 /*jshint browser:true, eqnull:true */
-/*global jQuery:false */
+/*global jQuery:false, chrome:false */
 (function(debugBar, $) {
 	'use strict';
 	var bar;
@@ -36,7 +36,24 @@
 
 	function getModHtml(name) {
 		var mod = debugBar(name);
-		return '<div id="bdar' + name + '" class="dbar-mod"><div class="dbar-label"><span class="dbar-value">' + mod.getData() + '</span> <span class="dbar-name">' + mod.getName() + '</span></div></div>';
+		var content = getContent(mod);
+		return '<div id="bdar' + name + '" class="dbar-mod">' + content + '<div class="dbar-label"><span class="dbar-value">' + mod.getData() + '</span> <span class="dbar-name">' + mod.getName() + '</span></div></div>';
+	}
+
+	function getContent(mod) {
+		var html = mod && mod.getContent && mod.getContent();
+		if (mod && html == null && mod.getList) {
+			var item, items = [],
+				list = mod.getList();
+			for (var i = 0, len = list && list.length; i<len; i++) {
+				item = list[i];
+				if (item) {
+					items.push(item);
+				}
+			}
+			html = items.length ? '<ul><li>' + items.join('</li><li>') + '</li></ul>' : '';
+		}
+		return html;
 	}
 
 }(window.debugBar, window.jQuery));
