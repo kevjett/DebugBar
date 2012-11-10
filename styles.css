@@ -1,15 +1,14 @@
-
-
 body {
-	margin-top: 60px !important;
+	padding-top: 40px !important;
+	position: relative;
 }
 
 #debugBar {
 	position:fixed;
-	z-index: 1000;
+	z-index: 10000;
 	top: 0;
 	left: 0;
-	height: 60px;
+	height: 40px;
 	width: 100%;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
