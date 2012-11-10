@@ -3,8 +3,6 @@
 window.debugBar = (function() {
 	'use strict';
 
-	debugger;
-
 	var modules = {};
 	var initd = {};
 
@@ -14,6 +12,7 @@ window.debugBar = (function() {
 
 	bar.list = listModules;
 	bar.register = registerModule;
+	bar.update = createDispatcher();
 
 	function getModule(name) {
 		return initModule(name);
@@ -40,6 +39,28 @@ window.debugBar = (function() {
 
 	function registerModule(name, definition) {
 		modules[name] = definition;
+	}
+
+	function createDispatcher() {
+		var listeners = [];
+		var dispatcher = function() {
+			for (var i = 0, len = listeners.length; i<len; i++) {
+				listeners.call(bar);
+			}
+		};
+
+		dispatcher.addListener = function(listener) {
+			listeners.push(listener);
+		};
+
+		dispatcher.removeListener = function(listener) {
+			var idx = listeners.indexOf(listener);
+			if (idx > -1) {
+				listeners.splice(idx, 1);
+			}
+		};
+
+		return dispatcher;
 	}
 
 	return bar;

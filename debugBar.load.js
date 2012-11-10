@@ -3,8 +3,6 @@
 (function(debugBar) {
 	'use strict';
 
-	debugger;
-
 	debugBar.register('load', function() {
 		
 		var loadList = ['1', '2', '3'];
