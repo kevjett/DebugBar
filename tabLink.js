@@ -8,7 +8,9 @@
 		chrome.tabs.executeScript(tab.id, {file: "jquery.js"}, function() {
 			chrome.tabs.executeScript(tab.id, {file: "debugBar.js"}, function() {
 				chrome.tabs.executeScript(tab.id, {file: "debugBar.load.js"}, function() {
-					chrome.tabs.executeScript(tab.id, {file: "debugBar.html.js"});
+					chrome.tabs.executeScript(tab.id, {file: "debugBar.render.js"}, function() {
+						chrome.tabs.executeScript(tab.id, {file: "debugBar.html.js"});
+					});
 				});
 			});
 		});
