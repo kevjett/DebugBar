@@ -1,20 +1,47 @@
 /*jshint browser:true, eqnull:true */
 /*global jQuery:false */
-(function(document, $) {
+window.debugBar = (function() {
 	'use strict';
-	var debugBar;
 
 	debugger;
 
-	//	quiet stop
-	if (!$ || $('#debugBar').length) return;
-	
-	$(function() {
+	var modules = {};
+	var initd = {};
 
-		debugBar = $('<div id="debugBar"></div>');
-		$(document.body).append(debugBar);
+	var bar = function(moduleName) {
+		return getModule(moduleName);
+	};
 
-	});
+	bar.list = listModules;
+	bar.register = registerModule;
 
+	function getModule(name) {
+		return initModule(name);
+	}
 
-}(document, window.jQuery));
+	function listModules() {
+		var list = [];
+		for (var name in modules) {
+			if (modules.hasOwnProperty(name)) {
+				list.push(name);
+			}
+		}
+		return list;
+	}
+
+	function initModule(name) {
+		var mod = modules[name];
+		if (typeof(mod) == 'function' && !initd[name]) {
+			modules[name] = mod = mod(bar);
+			initd[name] = true;
+		}
+		return mod;
+	}
+
+	function registerModule(name, definition) {
+		modules[name] = definition;
+	}
+
+	return bar;
+
+}());
