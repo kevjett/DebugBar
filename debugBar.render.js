@@ -19,7 +19,7 @@
 		list.push('Load: ' + String(t.loadEventEnd - t.loadEventStart) + "ms");
 
 		//types
-		var network = { sectionStart:0, sectionLength:(t.requestStart-start), fontColor:'#EA8C7A', barColor:'#FCEEEC', borderColor:'#F6CBC4', sectionColor:'#F4C0B7', itemColor:'#E0543F' };
+		var network = { sectionStart:0, sectionLength:(t.connectEnd-start), fontColor:'#EA8C7A', barColor:'#FCEEEC', borderColor:'#F6CBC4', sectionColor:'#F4C0B7', itemColor:'#E0543F' };
 		var server = { sectionStart:(t.requestStart-start), sectionLength:(t.responseEnd-t.requestStart), fontColor:'#FFC933', barColor:'#FFF9E6', borderColor:'#FFEBB2', sectionColor:'#FFE7A1', itemColor:'#FFCB39' };
 		var browser = { sectionStart:(t.domLoading-start), sectionLength:(t.loadEventEnd - t.domLoading), fontColor:'#51C2BE', barColor:'#E7F7F7', borderColor:'#83D5D4', sectionColor:'#A6E1E0', itemColor:'#35BAB8' };
 
